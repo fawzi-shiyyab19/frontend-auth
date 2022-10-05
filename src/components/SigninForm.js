@@ -18,11 +18,13 @@ function SigninForm() {
     const encoded = base64.encode(`${username}:${password}`);
     const basicAuth = { headers: { authorization: `Basic ${encoded}` } };
     const axiosRespose = await axios.post(url, {}, basicAuth);
+    console.log(axiosRespose.data)
     const token = axiosRespose.data.token;
     if (token) {
       cookies.save(`token`, token);
       cookies.save(`username`, axiosRespose.data.user.username);
       cookies.save(`_id`, axiosRespose.data.user._id);
+      cookies.save(`role`, axiosRespose.data.user.role);
       setIsLogged(true);
     } else {
       alert('Login faild Enter correct Username or Password');
