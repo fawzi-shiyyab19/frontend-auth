@@ -12,7 +12,7 @@ import { RefreshContext } from '../contexs/RefreshProvider';
 function Main() {
 
 
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { isLogged, setIsLogged,canDo } = useContext(AuthContext);
   const { refreshMain, setRefreshMain } = useContext(RefreshContext);
   const { mode, setMode } = useContext(themeContext);
 
@@ -22,6 +22,8 @@ function Main() {
 
   useEffect(() => {
     const token = cookies.load("token");
+    console.log("fawzi Can Do ",canDo("update"))
+    
     setMode(cookies.load("mode"))
     if (token) {
       setIsLogged(true);

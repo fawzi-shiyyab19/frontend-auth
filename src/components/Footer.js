@@ -8,6 +8,8 @@ function Footer() {
   return (
     <div className='fo'>
       <p className='pa'>Shiyyab All right reserved 2022</p>
+
+      
     </div >
   )
 }

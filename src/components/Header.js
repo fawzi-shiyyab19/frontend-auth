@@ -14,6 +14,8 @@ function Header() {
     cookies.remove('token');
     cookies.remove('username');
     cookies.remove('_id');
+    cookies.remove('capabilities');
+    cookies.remove('role');
     setIsLogged(false);
   }
 
