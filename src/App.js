@@ -6,14 +6,13 @@ import Footer from './components/Footer';
 import Main from './components/Main';
 import ThemeProvider from './contexs/ThemeProvider';
 import Login from './components/Login';
-import AuthProvider from './contexs/AuthProvider';
+import AuthProvider, { AuthContext } from './contexs/AuthProvider';
 import RefreshProvider from './contexs/RefreshProvider';
+import { useContext, useEffect } from 'react';
 
 
 
 function App() {
-
-
   return (
     <RefreshProvider>
       <AuthProvider>

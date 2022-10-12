@@ -19,12 +19,16 @@ function SigninForm() {
     const basicAuth = { headers: { authorization: `Basic ${encoded}` } };
     const axiosRespose = await axios.post(url, {}, basicAuth);
     console.log(axiosRespose.data)
+
     const token = axiosRespose.data.token;
     if (token) {
       cookies.save(`token`, token);
       cookies.save(`username`, axiosRespose.data.user.username);
       cookies.save(`_id`, axiosRespose.data.user._id);
       cookies.save(`role`, axiosRespose.data.user.role);
+      cookies.save(`capabilities`, axiosRespose.data.user.capabilities);
+
+
       setIsLogged(true);
     } else {
       alert('Login faild Enter correct Username or Password');
@@ -39,7 +43,7 @@ function SigninForm() {
           <legend>Login</legend>
           <input type='text' className='formField' placeholder='Username' id='usernameli' required></input>
           <input type='password' className='formField' placeholder='Password' id='passwordli' required autoComplete='off'></input>
-          <input type='submit' className='formSubmit' value='login' autoComplete='off' ></input>
+          <input type='submit' className='button' value='login' autoComplete='off' ></input>
         </fieldset>
       </form>
   )
