@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { RefreshContext } from '../contexs/RefreshProvider';
 import cookies from 'react-cookies';
-
+import { actions } from '../reducers/actionTypes';
 function AddPostForm() {
-  const { refreshMain, setRefreshMain } = useContext(RefreshContext);
+  //const { refreshMain, setRefreshMain } = useContext(RefreshContext);
+  const { dispatchRefresh} = useContext(RefreshContext);
 
   async function AddPost(e) {
     e.preventDefault();
@@ -20,7 +21,7 @@ function AddPostForm() {
       }
     }
     const axiosResponse = await axios.post(url, post, bearer);
-    setRefreshMain(pre => pre + 1);
+    dispatchRefresh({type:actions.SetRefreshMain})
     e.target.title.value = '';
     e.target.content.value = '';
   }

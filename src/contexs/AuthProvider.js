@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState,useReducer } from 'react'
 import cookies from 'react-cookies';
+import { authReducer, initState } from '../reducers/authReducer';
 
 
 export const AuthContext = React.createContext();
 
 
 function AuthProvider(props) {
-  const [isLogged, setIsLogged] = useState(() => false);
-
-
+  // const [isLogged, setIsLogged] = useState(() => false);
+  const [state, dispatch] = useReducer(authReducer, initState)
+  
+console.log(state)
 
   const cab = cookies.load("capabilities");
 
@@ -16,7 +18,7 @@ function AuthProvider(props) {
       return (cab?.includes(capability))
   }
   
-  const AuthContextData = { isLogged, setIsLogged, canDo };
+  const AuthContextData = { state, dispatch, canDo };
 
 
   return (

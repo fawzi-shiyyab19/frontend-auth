@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { themeContext } from '../contexs/ThemeProvider';
 import { AuthContext } from '../contexs/AuthProvider';
 import cookies from "react-cookies";
-
+import { actions } from '../reducers/actionTypes';
 
 function Header() {
 
   const theme_Context = useContext(themeContext);
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+ // const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext)
+
 
   function logOut() {
     cookies.remove('token');
@@ -16,16 +18,16 @@ function Header() {
     cookies.remove('_id');
     cookies.remove('capabilities');
     cookies.remove('role');
-    setIsLogged(false);
+    dispatch({type:actions.Login_notSuccess })
   }
 
   return (
     <nav >
       
       <div className='lo'>
-        {isLogged && <Link to="/" >Main</Link>}
-        {isLogged && <button >{cookies.load('username')}</button>}
-        {isLogged && <Link to="/login"  onClick={logOut}>Logout</Link>}
+        {state.isLogged && <Link to="/" >Main</Link>}
+        {state.isLogged && <button >{cookies.load('username')}</button>}
+        {state.isLogged && <Link to="/login"  onClick={logOut}>Logout</Link>}
  </div>
     </nav>
   )
