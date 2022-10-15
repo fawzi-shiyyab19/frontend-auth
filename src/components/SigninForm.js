@@ -4,11 +4,13 @@ import base64 from 'base-64';
 import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../contexs/AuthProvider';
 import cookies from "react-cookies";
+import { actions } from '../reducers/actionTypes';
 
 
 function SigninForm() {
 
-  const { isLogged, setIsLogged } = useContext(AuthContext)
+  // const { isLogged, setIsLogged } = useContext(AuthContext)
+  const { state, dispatch } = useContext(AuthContext)
 
   async function login(e) {
     e.preventDefault();
@@ -29,7 +31,7 @@ function SigninForm() {
       cookies.save(`capabilities`, axiosRespose.data.user.capabilities);
 
 
-      setIsLogged(true);
+      dispatch({type:actions.Login_Success })
     } else {
       alert('Login faild Enter correct Username or Password');
     }
@@ -37,7 +39,7 @@ function SigninForm() {
 
 
   return (
-    (isLogged) ? <Navigate to='/' /> :
+    (state.isLogged) ? <Navigate to='/' /> :
       <form onSubmit={login}>
         <fieldset className='fs'>
           <legend>Login</legend>

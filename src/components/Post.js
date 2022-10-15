@@ -6,10 +6,13 @@ import { RefreshContext } from '../contexs/RefreshProvider';
 import Modal from '../components/Modal'
 import cookies from 'react-cookies';
 import { ControlLabel } from 'react-bootstrap';
+import { actions } from '../reducers/actionTypes';
 
 function Post({ postData }) { //postData = {id='', title = '',content='',userId='',comments=[]}
 
-  const { refreshMain, setRefreshMain } = useContext(RefreshContext);
+ // const { refreshMain, setRefreshMain } = useContext(RefreshContext);
+  const { dispatchRefresh} = useContext(RefreshContext);
+
   const role = cookies.load("role");
 
   const [showModal , setShowModal]= useState(false)
@@ -28,7 +31,7 @@ function Post({ postData }) { //postData = {id='', title = '',content='',userId=
       }
     }
     axios.delete(url, bearer)
-      .then(resolved => setRefreshMain(pre => pre + 1))
+      .then(resolved => dispatchRefresh({type:actions.SetRefreshMain}))
       .catch(reject => alert(reject.response.data));
 
   

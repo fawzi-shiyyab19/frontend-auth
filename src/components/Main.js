@@ -8,12 +8,12 @@ import Post from './Post';
 import '../App.css';
 import { themeContext } from '../contexs/ThemeProvider';
 import { RefreshContext } from '../contexs/RefreshProvider';
-
+import { actions } from '../reducers/actionTypes';
 function Main() {
 
 
-  const { isLogged, setIsLogged,canDo } = useContext(AuthContext);
-  const { refreshMain, setRefreshMain } = useContext(RefreshContext);
+  const { state, dispatch,canDo } = useContext(AuthContext);
+  const { stateRefresh} = useContext(RefreshContext);
   const { mode, setMode } = useContext(themeContext);
 
   const [posts, setPosts] = useState([]);
@@ -26,7 +26,7 @@ function Main() {
     
     setMode(cookies.load("mode"))
     if (token) {
-      setIsLogged(true);
+      dispatch({type:actions.Login_Success })
       const bearer = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -43,12 +43,12 @@ function Main() {
         })
     }
 
-  }, [refreshMain])
+  }, [stateRefresh.refreshMain])
 
 
   return (
     <>
-      {(isLogged) ?
+      {(state.isLogged) ?
         <div>
           <section>
             <AddPostForm />
