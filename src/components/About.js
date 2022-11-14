@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import cookies from 'react-cookies';
 import { themeContext } from '../contexs/ThemeProvider';
 
+import { Stack ,Text} from '@chakra-ui/react';
 
 
 function About() {
@@ -14,9 +15,9 @@ function About() {
   }, []);
 
   return (
-    <div>
-      <p>Hello im fawzi shiyyab and this is my assignment </p>
-    </div>
+    <Stack>
+      <Text>Hello im fawzi shiyyab and this is my assignment </Text>
+    </Stack>
   )
 }
 

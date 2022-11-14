@@ -5,7 +5,9 @@ import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../contexs/AuthProvider';
 import cookies from "react-cookies";
 import { actions } from '../reducers/actionTypes';
+import { Input  } from '@chakra-ui/react';
 
+ 
 
 function SigninForm() {
 
@@ -43,9 +45,9 @@ function SigninForm() {
       <form onSubmit={login}>
         <fieldset className='fs'>
           <legend>Login</legend>
-          <input type='text' className='formField' placeholder='Username' id='usernameli' required></input>
-          <input type='password' className='formField' placeholder='Password' id='passwordli' required autoComplete='off'></input>
-          <input type='submit' className='button' value='login' autoComplete='off' ></input>
+          <Input placeholder='medium size' size='md' type='text' className='formField'  id='usernameli' required></Input>
+          <Input placeholder='medium size' size='md' type='password' className='formField'  id='passwordli' required autoComplete='off'></Input>
+          <input  type='submit' className='button' value='login' autoComplete='off' ></input>
         </fieldset>
       </form>
   )
