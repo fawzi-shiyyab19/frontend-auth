@@ -4,6 +4,7 @@ import SigninForm from './SigninForm';
 import SignupForm from './SignupForm';
 import cookies from 'react-cookies';
 import '../App.css';
+import { Stack  } from '@chakra-ui/react';
 
 function Login() {
   const { mode, setMode } = useContext(themeContext);
@@ -13,16 +14,16 @@ function Login() {
   }, []);
 
   return (
-    <div className='he'>
-      <div  >
+    <Stack className='he'>
+      <Stack  >
         <h1 className='welcome'>Welcome to Fawzi Shiyyab White Board</h1>
        
-      </div>
-      <div >
+      </Stack>
+      <Stack >
         <SigninForm />
         <SignupForm />
-      </div>
-    </div >
+      </Stack>
+    </Stack >
   )
 }
 

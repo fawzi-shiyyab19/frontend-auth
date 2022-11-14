@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import '../App.css';
 import { themeContext } from '../contexs/ThemeProvider';
+import { Text,Stack } from '@chakra-ui/react';
 
 function Footer() {
   const theme_Context = useContext(themeContext);
 
   return (
-    <div className='fo'>
-      <p className='pa'>Shiyyab All right reserved 2022</p>
+    <Stack className='fo'>
+      <Text className='pa'>Shiyyab All right reserved 2022</Text>
 
       
-    </div >
+    </Stack >
   )
 }
 

@@ -5,13 +5,15 @@ import CommentsHolder from './CommentsHolder';
 import { RefreshContext } from '../contexs/RefreshProvider';
 import Modal from '../components/Modal'
 import cookies from 'react-cookies';
-import { ControlLabel } from 'react-bootstrap';
 import { actions } from '../reducers/actionTypes';
+import { Button, HStack,useColorMode,Text,Heading,Stack  } from '@chakra-ui/react';
 
 function Post({ postData }) { //postData = {id='', title = '',content='',userId='',comments=[]}
 
  // const { refreshMain, setRefreshMain } = useContext(RefreshContext);
   const { dispatchRefresh} = useContext(RefreshContext);
+
+  const { colorMode } = useColorMode();
 
   const role = cookies.load("role");
 
@@ -64,23 +66,33 @@ function Post({ postData }) { //postData = {id='', title = '',content='',userId=
 
 
   return (
-    <div className='pos'>
+    <Stack  className='pos'>
       {showModal &&
       <Modal updatePost={updatePost}  setShowModal={setShowModal} showModal={showModal} />
 
       }
       {(role === "admin" ||postData?.userId == cookies.load("_id") ) &&
       <>
-      <button onClick={deletePost} >delete</button>
-      <button onClick={()=>setShowModal(true)} >Update</button>
+      <HStack>
+      <Button onClick={deletePost} bg={colorMode === "light" ? "blue.800" : "blue.200"}
+                                    color={colorMode === "light" ? "pink.200" : "pink.800"}
+                                    _hover={{ bg: colorMode === "light" ? "pink.700" : "pink.300" }}
+                                    ml="1rem" >delete</Button>
+      <Button onClick={()=>setShowModal(true)} bg={colorMode === "light" ? "blue.800" : "blue.200"}
+                                    color={colorMode === "light" ? "pink.200" : "pink.800"}
+                                    _hover={{ bg: colorMode === "light" ? "pink.700" : "pink.300" }}
+                                    ml="1rem">Update</Button>
+      </HStack>
       </>
       }
-      <h4>{postData.title}</h4>
+      <Heading as='h1' size='lg'>
+      {postData.title}
+  </Heading>
       <hr></hr>
-      <p>{postData.content}</p>
-      {postData.comments.length?<CommentsHolder comments={postData.comments} />:<p >Add the first comment...</p>}
+      <Text>{postData.content}</Text>
+      {postData.comments.length?<CommentsHolder comments={postData.comments} />:<Text >Add the first comment...</Text>}
       <CommentForm postID={postData.id} />
-    </div>
+    </Stack >
   )
 }
 

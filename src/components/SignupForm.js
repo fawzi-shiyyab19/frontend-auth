@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Input  } from '@chakra-ui/react';
 
 function SignupForm() {
 
@@ -23,10 +24,10 @@ function SignupForm() {
     <form onSubmit={signUp}>
       <fieldset className='fs'>
         <legend>Sign Up</legend>
-        <input type='text' className='formField' placeholder='Username' id='usernamesu' required></input>
-        <input type='text' className='formField' placeholder='E-mail' id='email' required></input>
-        <input type='password' className='formField' placeholder='Password' id='passwordsu' required></input>
-        <input type='password' className='formField' placeholder='Confirm Password' id='confirmPassword' required autoComplete='off'></input>
+        <Input type='text' className='formField' placeholder='Username' id='usernamesu' required></Input>
+        <Input type='text' className='formField' placeholder='E-mail' id='email' required></Input>
+        <Input type='password' className='formField' placeholder='Password' id='passwordsu' required></Input>
+        <Input type='password' className='formField' placeholder='Confirm Password' id='confirmPassword' required autoComplete='off'></Input>
         <input type='submit' className='button' value='signUp' ></input>
       </fieldset>
     </form>

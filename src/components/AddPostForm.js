@@ -3,7 +3,11 @@ import React, { useContext, useState } from 'react';
 import { RefreshContext } from '../contexs/RefreshProvider';
 import cookies from 'react-cookies';
 import { actions } from '../reducers/actionTypes';
+import { Input ,useColorMode} from '@chakra-ui/react';
+
+
 function AddPostForm() {
+  const { colorMode } = useColorMode();
   //const { refreshMain, setRefreshMain } = useContext(RefreshContext);
   const { dispatchRefresh} = useContext(RefreshContext);
 
@@ -27,17 +31,13 @@ function AddPostForm() {
   }
 
 
-
-
-
-
   return (
     <form className='addPostForm' onSubmit={AddPost}>
-      <input type='text' placeholder='Title' name='title' id='ttt' required></input>
+      <Input type='text' placeholder='Title' name='title' id='ttt' required></Input>
       <br></br>
-      <input type='text' placeholder='Content' name='content' id='tttC' required></input>
+      <Input type='text' placeholder='Content' name='content' id='tttC' required></Input>
       <br></br>
-      <input type='submit' value='Post' id='tttS'></input>
+      <input type='submit' value='Post' id='tttS' ></input>
     </form>
   )
 }

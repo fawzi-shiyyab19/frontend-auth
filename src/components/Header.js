@@ -4,13 +4,14 @@ import { themeContext } from '../contexs/ThemeProvider';
 import { AuthContext } from '../contexs/AuthProvider';
 import cookies from "react-cookies";
 import { actions } from '../reducers/actionTypes';
+import { HStack,Button ,useColorMode,Text } from '@chakra-ui/react';
 
 function Header() {
 
   const theme_Context = useContext(themeContext);
  // const { isLogged, setIsLogged } = useContext(AuthContext);
   const { state, dispatch } = useContext(AuthContext)
-
+  const { colorMode } = useColorMode();
 
   function logOut() {
     cookies.remove('token');
@@ -22,13 +23,18 @@ function Header() {
   }
 
   return (
-    <nav >
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       
-      <div className='lo'>
-        {state.isLogged && <Link to="/" >Main</Link>}
-        {state.isLogged && <button >{cookies.load('username')}</button>}
-        {state.isLogged && <Link to="/login"  onClick={logOut}>Logout</Link>}
- </div>
+      <HStack className='lo' padding={3} bg={colorMode === "light" ? "gray.200" : "gray.800"}
+                        w="100vw"
+                        p={4}
+                        pt={2}
+                        rounded="md"
+                        shadow="md" >
+        {state.isLogged && <Button to="/" >Main</Button>}
+        {state.isLogged && <Button to="/login"  onClick={logOut}>Logout</Button>}
+        {state.isLogged && <Text>Welcome {cookies.load('username')}</Text>}
+ </HStack>
     </nav>
   )
 }
