@@ -5,11 +5,12 @@ import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../contexs/AuthProvider';
 import cookies from "react-cookies";
 import { actions } from '../reducers/actionTypes';
-import { Input  } from '@chakra-ui/react';
+import { Input,useColorMode } from '@chakra-ui/react';
 
  
 
 function SigninForm() {
+  const { colorMode } = useColorMode();
 
   // const { isLogged, setIsLogged } = useContext(AuthContext)
   const { state, dispatch } = useContext(AuthContext)
@@ -45,8 +46,14 @@ function SigninForm() {
       <form onSubmit={login}>
         <fieldset className='fs'>
           <legend>Login</legend>
-          <Input placeholder='medium size' size='md' type='text' className='formField'  id='usernameli' required></Input>
-          <Input placeholder='medium size' size='md' type='password' className='formField'  id='passwordli' required autoComplete='off'></Input>
+          <Input placeholder='medium size' size='md' type='text'  id='usernameli' required  bg={colorMode === "light" ? "input.100" : "input.900"}
+                        border="2px"
+                        borderColor="red.300"
+                        rounded="md"></Input>
+          <Input placeholder='medium size' size='md' type='password' className='formField'  id='passwordli' required autoComplete='off' bg={colorMode === "light" ? "input.100" : "input.900"}
+                        border="2px"
+                        borderColor="red.300"
+                        rounded="md"></Input>
           <input  type='submit' className='button' value='login' autoComplete='off' ></input>
         </fieldset>
       </form>

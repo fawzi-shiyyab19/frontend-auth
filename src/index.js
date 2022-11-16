@@ -5,11 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-
+import  myTheme  from './theme/index';
+const config = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+}
+const theme = extendTheme({ config })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={myTheme}>
     <App />
   </ChakraProvider>
 

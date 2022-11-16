@@ -9,6 +9,7 @@ import Login from './components/Login';
 import AuthProvider, { AuthContext } from './contexs/AuthProvider';
 import RefreshProvider from './contexs/RefreshProvider';
 import { useContext, useEffect } from 'react';
+import { newTheme } from './theme';
 
 
 

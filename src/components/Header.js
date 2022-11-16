@@ -25,7 +25,7 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       
-      <HStack className='lo' padding={3} bg={colorMode === "light" ? "gray.200" : "gray.800"}
+      <HStack className='lo' padding={3} bg={colorMode === "light" ? "authButton.100" : "authButton.900"}
                         w="100vw"
                         p={4}
                         pt={2}
