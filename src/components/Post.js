@@ -74,12 +74,12 @@ function Post({ postData }) { //postData = {id='', title = '',content='',userId=
       {(role === "admin" ||postData?.userId == cookies.load("_id") ) &&
       <>
       <HStack>
-      <Button onClick={deletePost} bg={colorMode === "light" ? "blue.800" : "blue.200"}
-                                    color={colorMode === "light" ? "pink.200" : "pink.800"}
+      <Button onClick={deletePost} bg={colorMode === "light" ? "authButton.900" : "authButton.100"}
+                                    color={colorMode === "light" ? "authButton.100" : "authButton.900"}
                                     _hover={{ bg: colorMode === "light" ? "pink.700" : "pink.300" }}
                                     ml="1rem" >delete</Button>
-      <Button onClick={()=>setShowModal(true)} bg={colorMode === "light" ? "blue.800" : "blue.200"}
-                                    color={colorMode === "light" ? "pink.200" : "pink.800"}
+      <Button onClick={()=>setShowModal(true)} bg={colorMode === "light" ? "primary.800" : "primary.200"}
+                                    color={colorMode === "light" ? "primary.200" : "primary.800"}
                                     _hover={{ bg: colorMode === "light" ? "pink.700" : "pink.300" }}
                                     ml="1rem">Update</Button>
       </HStack>
