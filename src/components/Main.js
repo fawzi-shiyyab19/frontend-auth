@@ -9,7 +9,7 @@ import '../App.css';
 import { themeContext } from '../contexs/ThemeProvider';
 import { RefreshContext } from '../contexs/RefreshProvider';
 import { actions } from '../reducers/actionTypes';
-import { Stack  } from '@chakra-ui/react';
+
 
 function Main() {
 
@@ -51,14 +51,14 @@ function Main() {
   return (
     <>
       {(state.isLogged) ?
-        <Stack>
+        <p>
           <section>
             <AddPostForm />
           </section>
           <section >
             {posts.map((post, index) => <Post postData={post} key={index} />)}
           </section>
-        </Stack >
+        </p >
         : <Navigate to='/login' />}
     </>
   )

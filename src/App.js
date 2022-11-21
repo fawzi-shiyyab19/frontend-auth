@@ -10,11 +10,13 @@ import AuthProvider, { AuthContext } from './contexs/AuthProvider';
 import RefreshProvider from './contexs/RefreshProvider';
 import { useContext, useEffect } from 'react';
 import { newTheme } from './theme';
+import { Counter } from './features/counter/Counter';
 
 
 
 function App() {
   return (
+    
     <RefreshProvider>
       <AuthProvider>
         <ThemeProvider>
@@ -24,6 +26,29 @@ function App() {
               <Route exact path="/" element={<Main />}></Route>
               <Route exact path="/login" element={<Login />}></Route>
               {/* <Route exact path="/about" element={<About />}></Route> */}
+              <a
+            href="https://redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux
+          </a>
+          <span>, </span>
+          <a
+            href="https://redux-toolkit.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux Toolkit
+          </a>
+
+          <a
+            href="https://react-redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React Redux
+          </a>
             </Routes>
             <Footer />
           </BrowserRouter>
